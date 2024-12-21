@@ -1,4 +1,4 @@
-package com.apurba.in.sample;
+package com.apurba.in.tests.sample;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
