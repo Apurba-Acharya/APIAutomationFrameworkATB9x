@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.apurba.in.pojos.*;
 
 public class PayloadManager {
-    // Converting the JAVA object to the String
+    // Converting the JAVA object to the String -> serialization
     Gson gson;
     public String createPayloadBookingAsString() {
 
@@ -13,15 +13,15 @@ public class PayloadManager {
         booking.setLastname("Brown");
         booking.setTotalprice(111);
         booking.setDepositpaid(true);
+        booking.setAdditionalneeds("Breakfast");
 
         Bookingdates bookingdates = new Bookingdates();
         bookingdates.setCheckin("2024-02-01");
         bookingdates.setCheckout("2024-02-01");
-
         booking.setBookingdates(bookingdates);
-        booking.setAdditionalneeds("Breakfast");
 
         System.out.println(booking);
+
         gson = new Gson();
         String jsonStringpayload = gson.toJson(booking);
         System.out.println(jsonStringpayload);
@@ -30,9 +30,7 @@ public class PayloadManager {
     }
 
 
-
-
-    // Converting the String to the JAVA Object
+    // Converting the String to the JAVA Object ->deserialization
     public BookingRespons bookingResponseJava(String responseString) {
         gson = new Gson();
         BookingRespons bookingResponse = gson.fromJson(responseString, BookingRespons.class);
@@ -46,7 +44,7 @@ public class PayloadManager {
     }
 
     //  ---- Token -----
-    // JAVA to JSON
+    // JAVA to JSON -> serialization
     public String setAuthPayload(){
         Auth auth = new Auth();
         auth.setUsername("admin");
@@ -58,7 +56,7 @@ public class PayloadManager {
 
     }
 
-    // JSON to Java
+    // JSON to Java -> deserialization
     public String getTokenFromJSON(String tokenResponse){
         gson = new Gson();
         TokenResponse tokenResponse1  = gson.fromJson(tokenResponse, TokenResponse.class);

@@ -45,7 +45,6 @@ public  class BaseTest {
 
     }
 
-
     public String getToken() {
         requestSpecification = RestAssured
                 .given()
@@ -61,9 +60,5 @@ public  class BaseTest {
         String token = payloadManager.getTokenFromJSON(response.asString());
 
         return token;
-
-
     }
-
-
 }
